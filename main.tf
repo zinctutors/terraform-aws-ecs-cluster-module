@@ -13,7 +13,7 @@ resource "aws_ecs_cluster" "ecs_cluster" {
 
 resource "aws_ecs_capacity_provider" "capacity_providers" {
   for_each = { for name, capacity_provider in var.capacity_providers : capacity_provider.name => capacity_provider }
-  name     = "${var.environment}_ecs_${each.value.name}"
+  name     = "${var.environment}_${each.value.name}"
   auto_scaling_group_provider {
     auto_scaling_group_arn = aws_autoscaling_group.ecs_cluster_asg[each.key].arn
     managed_scaling {
