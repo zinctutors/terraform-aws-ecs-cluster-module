@@ -6,14 +6,6 @@ variable "cluster_name" {
   type        = string
   description = "Name of ECS cluster."
 }
-variable "vpc_id" {
-  type        = string
-  description = "AWS VPC identifier for ECS cluster"
-}
-variable "vpc_cidr_block" {
-  type        = string
-  description = "CIDR block for VPC."
-}
 variable "capacity_providers" {
   type = list(object({
     name                           = string
