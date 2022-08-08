@@ -19,7 +19,7 @@ resource "aws_autoscaling_group" "ecs_cluster_asg" {
   health_check_grace_period = each.value.health_check_grace_period
   launch_configuration      = aws_launch_configuration.ecs_launch_config[each.key].name
   max_size                  = each.value.max_size
-  min_size                  = each.value.max_size
+  min_size                  = each.value.min_size
   protect_from_scale_in     = each.value.protect_from_scale_in
   tag {
     key                 = "Name"
