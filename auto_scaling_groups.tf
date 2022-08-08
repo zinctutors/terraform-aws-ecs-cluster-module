@@ -36,6 +36,14 @@ resource "aws_autoscaling_group" "ecs_cluster_asg" {
     propagate_at_launch = true
     value               = var.environment
   }
+  dynamic "tag" {
+    for_each = each.value.additional_tags
+    content {
+      key                 = tag.value.key
+      value               = tag.value.value
+      propagate_at_launch = tag.value.propagate_at_launch
+    }
+  }
   lifecycle {
     create_before_destroy = true
   }
