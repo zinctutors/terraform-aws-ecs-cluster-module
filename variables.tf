@@ -24,9 +24,15 @@ variable "asg" {
     max_size                  = number
     min_size                  = number
     protect_from_scale_in     = bool
+    additional_tags = list(object({
+      key                 = string
+      value               = string
+      propagate_at_launch = bool
+    }))
   }))
   description = "Autoscaling group configuration."
 }
+
 variable "launch_configs" {
   type = list(object({
     name                      = string
