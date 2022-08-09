@@ -6,9 +6,6 @@ resource "aws_launch_configuration" "ecs_launch_config" {
   user_data_base64     = each.value.user_data_base64
   iam_instance_profile = each.value.iam_instance_profile_name
   security_groups      = each.value.security_group_ids
-  lifecycle {
-    create_before_destroy = true
-  }
 }
 
 resource "aws_autoscaling_group" "ecs_cluster_asg" {
