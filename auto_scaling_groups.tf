@@ -1,11 +1,14 @@
 resource "aws_launch_configuration" "ecs_launch_config" {
   for_each             = { for launch_config_name, launch_config in var.launch_configs : launch_config.name => launch_config }
-  name                 = "${var.environment}_ecs_${each.value.name}"
+  name_prefix          = "${var.environment}_ecs_${each.value.name}_"
   image_id             = each.value.image_id
   instance_type        = each.value.instance_type
   user_data_base64     = each.value.user_data_base64
   iam_instance_profile = each.value.iam_instance_profile_name
   security_groups      = each.value.security_group_ids
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 
 resource "aws_autoscaling_group" "ecs_cluster_asg" {
