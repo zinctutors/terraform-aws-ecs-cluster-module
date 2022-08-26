@@ -13,7 +13,7 @@ This module creates following resources:
 
 
 ### Usage
-```
+```hcl
 module "app_cluster" {
   source       = "git::https://github.com/gaussb-labs/terraform-aws-ecs-cluster-module.git?ref=v1.1.2"
   environment  = "production"
@@ -23,7 +23,7 @@ module "app_cluster" {
       name                      = "java_application"
       image_id                  = "ami-040d909ea4e56f8f3"
       instance_type             = "t3a.medium"
-      user_data_base64          = <base64 encoded userdata>
+      user_data_base64          = ""
       iam_instance_profile_name = "ecs_agent_access_instance_profile"
       security_group_ids = ["sg-01", "sg-02"]
     },
@@ -31,7 +31,7 @@ module "app_cluster" {
       name                      = "rails_application"
       image_id                  = "ami-040d909ea4e56f8f3"
       instance_type             = "t3a.medium"
-      user_data_base64          = <base64 encoded userdata>
+      user_data_base64          = ""
       iam_instance_profile_name = "ecs_agent_access_instance_profile"
       security_group_ids = ["sg-03", "sg-04"]
     }
