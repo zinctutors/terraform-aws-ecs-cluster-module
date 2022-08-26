@@ -1,4 +1,4 @@
-## ECS Terraform Module
+## ECS Cluster Terraform Module
 
 Terraform module which creates Amazon ECS cluster with EC2 launch type
 
@@ -8,6 +8,8 @@ This module creates following resources:
 2. Capacity providers
 3. Autoscaling groups for EC2
 4. Launch configuration for EC2
+
+![](./diagram.svg)
 
 
 ### Usage
