@@ -14,7 +14,7 @@ resource "aws_launch_configuration" "ecs_launch_config" {
       volume_size = root_block_device.value.volume_size
     }
   }
-  security_groups      = each.value.security_group_ids
+  security_groups = each.value.security_group_ids
   lifecycle {
     create_before_destroy = true
   }
