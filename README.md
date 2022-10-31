@@ -25,6 +25,14 @@ module "app_cluster" {
       instance_type             = "t3a.medium"
       user_data_base64          = ""
       iam_instance_profile_name = "ecs_agent_access_instance_profile"
+      root_block_device = {
+        volume_type = "gp3"
+        volume_size = 30
+        tags = {
+          "Environment" = "staging"
+          "ManagedBy"   = "Terraform"
+        }
+      }
       security_group_ids = ["sg-01", "sg-02"]
     },
     {
