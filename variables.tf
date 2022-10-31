@@ -40,7 +40,11 @@ variable "launch_configs" {
     instance_type             = string
     user_data_base64          = string
     iam_instance_profile_name = string
-    security_group_ids        = list(string)
+    root_block_device = object({
+      volume_type = string
+      volume_size = number
+    })
+    security_group_ids = list(string)
   }))
   description = "Launch configuration for EC2 instances."
 }

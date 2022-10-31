@@ -25,6 +25,10 @@ module "app_cluster" {
       instance_type             = "t3a.medium"
       user_data_base64          = ""
       iam_instance_profile_name = "ecs_agent_access_instance_profile"
+      root_block_device = {
+        volume_type = "gp3"
+        volume_size = 30
+      }
       security_group_ids = ["sg-01", "sg-02"]
     },
     {
@@ -164,7 +168,7 @@ No modules.
 | launch_configs.user_data_base64                   	| Base64 encoded userdata.                                                                                                                    	| `string`       	| n/a     	| yes      	|
 | launch_configs.iam_instance_profile_name          	| Name of the IAM instance profile to attach to the EC2 instance.                                                                             	| `string`       	| n/a     	| yes      	|
 | launch_configs.security_group_ids                 	| List of security group ids to attach to the EC2 instance.                                                                                   	| `list(string)` 	| n/a     	| yes      	|
-
+| launch_configs.root_block_device                   | root block device configuration
 
 ### Outputs
 No outputs.
