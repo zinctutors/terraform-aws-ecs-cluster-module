@@ -41,13 +41,8 @@ variable "launch_configs" {
     user_data_base64          = string
     iam_instance_profile_name = string
     root_block_device = object({
-      ebs_volume_type = string
-      ebs_volume_size = number
-      tags = object({
-        Name        = string
-        Environment = string
-        ManagedBy   = string
-      })
+      volume_type = string
+      volume_size = number
     })
     security_group_ids = list(string)
   }))

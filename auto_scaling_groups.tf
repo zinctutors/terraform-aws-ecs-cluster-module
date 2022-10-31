@@ -5,7 +5,15 @@ resource "aws_launch_configuration" "ecs_launch_config" {
   instance_type        = each.value.instance_type
   user_data_base64     = each.value.user_data_base64
   iam_instance_profile = each.value.iam_instance_profile_name
-  root_block_device    = each.value.root_block_device || {}
+
+  dynamic "root_block_device" {
+    for_each = each.value.root_block_device != null ? [each.value.root_block_device] : []
+
+    content {
+      volume_type = root_block_device.value.volume_type
+      volume_size = root_block_device.value.volume_size
+    }
+  }
   security_groups      = each.value.security_group_ids
   lifecycle {
     create_before_destroy = true
