@@ -15,6 +15,7 @@ resource "aws_launch_configuration" "ecs_launch_config" {
     }
   }
   security_groups = each.value.security_group_ids
+  metadata_options = each.value.metadata_options
   lifecycle {
     create_before_destroy = true
   }
