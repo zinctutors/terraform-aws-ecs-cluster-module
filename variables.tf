@@ -45,6 +45,11 @@ variable "launch_configs" {
       volume_size = number
     })
     security_group_ids = list(string)
+    metadata_options = object({
+      http_endpoint               = string
+      http_put_response_hop_limit = number
+      http_tokens                 = string
+    })
   }))
   description = "Launch configuration for EC2 instances."
 }
